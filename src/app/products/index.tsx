@@ -2,20 +2,17 @@ import { FlatList, Platform, ScrollView, Text, View } from "react-native";
 import data from "../../data";
 import { ProductCard } from "../../components/ProductCard";
 
-declare var process: {
-  env: {
-    EXPO_PUBLIC_TEST_VAR: string;
-  };
-};
-
 export default function ProductListScreen() {
   if (Platform.OS === "web") {
     return (
-      <ScrollView className="items-center">
+      <ScrollView contentContainerStyle={{ alignItems: "center" }}>
         <View
-          className={
-            "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-screen-xl"
-          }
+          style={{
+            width: "100%",
+            maxWidth: 1280,
+            display: "grid",
+            gridTemplateColumns: "repeat(1, minmax(0, 1fr))",
+          }}
         >
           {data.map((item) => (
             <ProductCard item={item} key={item.id} />
@@ -24,15 +21,15 @@ export default function ProductListScreen() {
       </ScrollView>
     );
   }
+
   return (
     <FlatList
       data={data}
+      keyExtractor={(item) => item.id}
       renderItem={({ item }) => <ProductCard item={item} />}
       ListFooterComponent={
-        <View className="justify-center items-center my-4">
-          <Text className="text-gray-400 italic">
-            {process.env.EXPO_PUBLIC_TEST_VAR}
-          </Text>
+        <View style={{ justifyContent: "center", alignItems: "center", marginVertical: 16 }}>
+          <Text style={{ color: "gray", fontStyle: "italic" }}>{""}</Text>
         </View>
       }
     />

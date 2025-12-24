@@ -22,20 +22,7 @@ export default function AppLayout() {
             headerRight: () => <HeaderNav />,
           }}
         />
-        <Stack.Screen
-          name="products/"
-          options={{
-            headerLeft: () => (
-              <Link href="/">
-                <Text className="ml-6 font-bold tracking-widest text-lg">
-                  My Shop <Text className="font-normal"> | Shop</Text>
-                </Text>
-              </Link>
-            ),
-            headerTitle: "",
-            headerRight: () => <HeaderNav />,
-          }}
-        />
+
       </Stack>
     );
   }
@@ -52,7 +39,7 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
-        name="products"
+        name="/products"
         options={{
           tabBarShowLabel: false,
           title: "Products",

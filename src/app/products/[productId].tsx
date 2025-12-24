@@ -20,15 +20,14 @@ export default function ProductDetailsScreen() {
 
   if (!product) {
     return (
-      <View className="items-center mt-24">
-        <Text className="font-bold text-2xl mb-4">Not found</Text>
-        <Text className="mb-6">
-          Could not find product with ID{" "}
-          <Text className="font-bold">{productId}</Text>
+      <View style={{ alignItems: "center", marginTop: 96 }}>
+        <Text style={{ fontWeight: "bold", fontSize: 24, marginBottom: 16 }}>Not found</Text>
+        <Text style={{ marginBottom: 24 }}>
+          Could not find product with ID <Text style={{ fontWeight: "bold" }}>{productId}</Text>
         </Text>
         <Link href="/products" asChild>
-          <Pressable className="bg-black rounded px-4 py-2">
-            <Text className="text-white font-bold">View Other Products</Text>
+          <Pressable style={{ backgroundColor: "#000", borderRadius: 6, paddingHorizontal: 12, paddingVertical: 8 }}>
+            <Text style={{ color: "#fff", fontWeight: "bold" }}>View Other Products</Text>
           </Pressable>
         </Link>
       </View>
@@ -36,35 +35,25 @@ export default function ProductDetailsScreen() {
   }
 
   return (
-    <ScrollView contentContainerClassName="items-center  md:px-4">
-      <View className="flex-col md:flex-row max-w-screen-lg md:mt-8 items-center md:items-start flex-1">
+    <ScrollView contentContainerStyle={{ alignItems: "center", paddingHorizontal: 16 }}>
+      <View style={{ flexDirection: Platform.OS === "web" ? "row" : "column", maxWidth: 1024, marginTop: Platform.OS === "web" ? 24 : 0 }}>
         <Image
           source={product.imageSource}
-          style={Platform.OS !== "web" ? { height: 400, width } : undefined}
-          className="md:rounded-lg h-[400px] md:w-[500px] w-full"
+          style={Platform.OS !== "web" ? { height: 400, width } : { height: 400, width: 500 }}
         />
-        <View className="flex-1 p-6">
-          <Text className="text-2xl font-bold">{product.name}</Text>
+        <View style={{ flex: 1, padding: 16 }}>
+          <Text style={{ fontSize: 24, fontWeight: "bold" }}>{product.name}</Text>
           {isSale ? (
-            <View className="flex-row gap-2">
-              <Text className="text-red-400 line-through text-xl mb-4">
-                ${product.price}.00
-              </Text>
-              <Text className="text-gray-600 text-xl mb-4 font-bold">
-                ${product.price - 5}.00
-              </Text>
+            <View style={{ flexDirection: "row", gap: 8 }}>
+              <Text style={{ color: "#f87171", textDecorationLine: "line-through", fontSize: 18, marginBottom: 12 }}>${product.price}.00</Text>
+              <Text style={{ color: "#4b5563", fontSize: 18, marginBottom: 12, fontWeight: "bold" }}>${product.price - 5}.00</Text>
             </View>
           ) : (
-            <Text className="text-gray-500 text-xl mb-4">
-              ${product.price}.00
-            </Text>
+            <Text style={{ color: "#6b7280", fontSize: 18, marginBottom: 12 }}>${product.price}.00</Text>
           )}
-          <Text className="leading-8 text-lg mb-6">{product.description}</Text>
-          <Pressable
-            className="bg-black rounded px-4 py-2 self-start"
-            onPress={() => alert("Added!")}
-          >
-            <Text className="text-white font-bold">Add to Cart</Text>
+          <Text style={{ lineHeight: 28, fontSize: 16, marginBottom: 16 }}>{product.description}</Text>
+          <Pressable style={{ backgroundColor: "#000", borderRadius: 6, paddingHorizontal: 12, paddingVertical: 8 }} onPress={() => alert("Added!")}>
+            <Text style={{ color: "#fff", fontWeight: "bold" }}>Add to Cart</Text>
           </Pressable>
         </View>
       </View>
