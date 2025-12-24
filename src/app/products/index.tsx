@@ -8,7 +8,7 @@ declare var process: {
   };
 };
 
-const IndexScreen = () => {
+export default function ProductListScreen() {
   if (Platform.OS === "web") {
     return (
       <ScrollView className="items-center">
@@ -25,21 +25,16 @@ const IndexScreen = () => {
     );
   }
   return (
-    <>
-      <FlatList
+    <FlatList
       data={data}
       renderItem={({ item }) => <ProductCard item={item} />}
-          ListFooterComponent={
-            <View className="justify-center items-center my-4">
-              <Text className="text-gray-400 italic">
-                {process.env.EXPO_PUBLIC_TEST_VAR}
-              </Text>
-            </View>
-          }
-        />
-      </>
+      ListFooterComponent={
+        <View className="justify-center items-center my-4">
+          <Text className="text-gray-400 italic">
+            {process.env.EXPO_PUBLIC_TEST_VAR}
+          </Text>
+        </View>
+      }
+    />
   );
 }
-
-
-export default IndexScreen;

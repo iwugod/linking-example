@@ -23,7 +23,7 @@ export default function AppLayout() {
           }}
         />
         <Stack.Screen
-          name="products"
+          name="products/"
           options={{
             headerLeft: () => (
               <Link href="/">

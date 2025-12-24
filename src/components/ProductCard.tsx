@@ -29,7 +29,7 @@ export function ProductCard({ item }: { item: (typeof data)[number] }) {
         <Text className="font-bold text-lg">{item.name}</Text>
         <Text className="text-gray-500">${item.price}.00</Text>
         <View className="flex-row justify-between mt-4">
-          <Link href={`products/${item.id}`} asChild>
+          <Link href={`/products/${item.id}`} asChild>
             <Pressable className="border border-gray-600 rounded px-4 py-2">
               <Text className="text-gray-600">View Details</Text>
             </Pressable>
