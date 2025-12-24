@@ -38,7 +38,7 @@
             {
               "scheme": "https",
               "host": "linking-example.expo.app",
-              "pathPrefix": "/products"
+              "pathPrefix": "/index"
             }
           ],
           "category": [
